@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css" media="screen,projection" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body onload="resize_divs();">
+
+  <nav>
+    <div class="nav-wrapper orange">
+      <a href="#" class="brand-logo center">SDYVNDNE</a>
+    </div>
+  </nav>
+
+  <button class="btn" onclick="p();" style="width:100vw;height:100px;">Pause/Play</button>
+  <button class="btn res black-text" style="vertical-align: middle; background-color: beige; width: 49vw;"
+    onclick="previous()">
+    <p class="center-align">ಹಿಂದೆ</p>
+  </button>
+  <button class="white-text btn res" style="vertical-align: middle; background-color: #39221F; width: 49vw;"
+    onclick="next()" onload="">
+    <p class="center-align">ಮುಂದೆ</p>
+  </button>
+  <audio id="aud" autoplay> </audio>
+
+
+  <style>
+    .full-height {
+      height: 100vh;
+    }
+  </style>
+  <script>
+    function resize_divs() {
+      console.log('Resizing');
+      console.log(window.innerHeight);
+      avail_height = window.innerHeight - 156
+      var x = document.getElementsByClassName('res');
+      x[0].style.height = avail_height + 'px';
+      x[1].style.height = avail_height + 'px';
+    }
+  </script>
+  <script>
+    function p() {
+      var adui = document.getElementById('aud');
+      if (adui.paused) {
+        adui.play();
+      } else {
+        adui.pause();
+      }
+    }
+
+    var ads = [
+      'https://storytrail.herokuapp.com/files/5e95be249a3f7300175cd493', // Starting
+      'https://storytrail.herokuapp.com/files/5e95be3e9a3f7300175cd4a0', // Achamane
+      // Insert pranayama here
+      'https://storytrail.herokuapp.com/files/5e95be899a3f7300175cd4ae', // Mama upatta
+      'https://storytrail.herokuapp.com/files/5e95bf199a3f7300175cd4bd', // Manastoke
+      'https://storytrail.herokuapp.com/files/5e95bf749a3f7300175cd4cd', // Agniriti bhasma
+      'https://storytrail.herokuapp.com/files/5e95be3e9a3f7300175cd4a0', // Achamane
+      'https://storytrail.herokuapp.com/files/5e95bfc49a3f7300175cd4de', // Premlim cleansing
+      'https://storytrail.herokuapp.com/files/5e95be3e9a3f7300175cd4a0', // Achamane
+      // Insert pranayama here
+      'https://storytrail.herokuapp.com/files/5e95c0009a3f7300175cd501', // PM dRC
+      'https://storytrail.herokuapp.com/files/5e95c0749a3f7300175cd515', // Apohishta
+      'https://storytrail.herokuapp.com/files/5e95c0e99a3f7300175cd52a', // Abhyantara shudhdhodhakka prashane
+      'https://storytrail.herokuapp.com/files/5e95be3e9a3f7300175cd4a0', // Achamane
+      'https://storytrail.herokuapp.com/files/5e95c1199a3f7300175cd540', // DM SRC
+      'https://storytrail.herokuapp.com/files/5e95c0749a3f7300175cd515', // Apohishta
+      'https://storytrail.herokuapp.com/files/5e95c22a9a3f7300175cd557', // Shanno devi
+      'https://storytrail.herokuapp.com/files/5e95c26d9a3f7300175cd570', // PPV DRC
+      'https://storytrail.herokuapp.com/files/5e95c317dd2656001769771a', // PPV
+      'https://storytrail.herokuapp.com/files/5e95be3e9a3f7300175cd4a0', // Achamane
+      // Insert pranayama here
+      'https://storytrail.herokuapp.com/files/5e95c36fdd2656001769774f', // Uttishta devi
+      'https://storytrail.herokuapp.com/files/5e95c38bdd2656001769776c', // tejosi
+      'https://storytrail.herokuapp.com/files/5e95be3e9a3f7300175cd4a0', // Achamane
+      'https://storytrail.herokuapp.com/files/5e95c3fbdd2656001769778a', // Syona prithivi drc
+      'https://storytrail.herokuapp.com/files/5e95c42edd265600176977a9', // Syona Prithivi
+      'https://storytrail.herokuapp.com/files/5e95c475dd265600176977c9', // Prithiviti
+      // Insert pranayama here
+      'https://storytrail.herokuapp.com/files/5e95c494dd265600176977ea', // Sayujyam drc
+      'https://storytrail.herokuapp.com/files/5e95c544dd2656001769780c', // Sayujyam P1
+      'https://storytrail.herokuapp.com/files/5e95c58fdd2656001769782f', // Sayujyam P2
+      'https://storytrail.herokuapp.com/files/5e95c5e0dd26560017697854', // Karanyasa
+      'https://storytrail.herokuapp.com/files/5e95c607dd26560017697879', // Anganyasa
+      'https://storytrail.herokuapp.com/files/5e95c7e3dd2656001769789f', // Dhyana
+      // Japa happens here
+      'https://storytrail.herokuapp.com/files/5e95c607dd26560017697879', // Anganyasa
+      'https://storytrail.herokuapp.com/files/5e95c7e3dd2656001769789f', // Dhyana
+      'https://storytrail.herokuapp.com/files/5e95c84edd265600176978c6', // Jatavedasa
+      'https://storytrail.herokuapp.com/files/5e95c8addd265600176978ee', // Tachchanyyo drc
+      'https://storytrail.herokuapp.com/files/5e95c903dd26560017697917', // Tachchanyyo
+      'https://storytrail.herokuapp.com/files/5e95c937dd26560017697941', // nb drc
+      'https://storytrail.herokuapp.com/files/5e95c999dd2656001769796c', // Namo Brahmane 1
+      'https://storytrail.herokuapp.com/files/5e95c999dd2656001769796c', // Namo Brahmane 2
+      'https://storytrail.herokuapp.com/files/5e95c999dd2656001769796c', // Namo Brahmane 3
+      'https://storytrail.herokuapp.com/files/5e95caf1dd26560017697998', // Prachyei dishe
+      // Om nama itits
+      // pravara
+      'https://storytrail.herokuapp.com/files/5e95be3e9a3f7300175cd4a0', // Achamane
+      'https://storytrail.herokuapp.com/files/5e95cb1bdd265600176979c6', // Yasya smaran
+      'https://storytrail.herokuapp.com/files/5e95cb2edd265600176979f4', // Madhye
+      'https://storytrail.herokuapp.com/files/5e95cb55dd26560017697a23', // Kayenavacha
+      'https://storytrail.herokuapp.com/files/5e95be3e9a3f7300175cd4a0', // Achamane
+      'https://storytrail.herokuapp.com/files/5e95cb9cdd26560017697a53' // Adyano
+    ];
+    var index = 0;
+    var player = document.getElementById("aud");
+    player.src = ads[index];
+
+
+    function next() {
+      if (index < ads.length - 1) {
+        index = index + 1;
+        player.src = ads[index];
+        console.log("This is index" + index);
+        console.log("This is the array index");
+        document.getElementById('aud').play();
+      }
+    }
+
+    function previous() {
+      if (index > 0) {
+        index = index - 1;
+        player.src = ads[index];
+        console.log("This is index" + index);
+        console.log("This is the array index");
+      }
+    }
+
+  </script>
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+  <script type="text/javascript" src="/app.js"></script>
+</body>
+
+</html>

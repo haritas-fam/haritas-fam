@@ -1,0 +1,1 @@
+console.log('SCSCSCSCSCSCSC\nSandhyavandane app\nChinmay K Haritas 2020\nAll rights reserved')

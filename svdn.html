@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/svdn/materialize/css/materialize.css" media="screen,projection" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sandhyavandane</title>
+</head>
+
+<style>
+    .navbtn1 {
+        height: 160px;
+        width: 48%;
+        display: inline-block;
+        padding: 0%;
+        background-color:
+            orange;
+        border: 0;
+        font-size: 2em
+    }
+    .navbtn2 {
+        height: 160px;
+        width: 48%;
+        display: inline-block;
+        padding: 0%;
+        background-color:
+            blue;
+        border: 0;
+        font-size: 2em
+    }
+</style>
+
+<body onkeypress="clickevent(event)">
+    <button style="width: 100%; height: 80px; font: 2em sans-serif;" class="purple white-text " onclick="p();">Pause/Play</button>
+
+    <button onclick="prev()" class="navbtn1" >
+        ಹಿಂದೆ</button>
+    <button onclick="next()" class="navbtn2 white-text"
+        >
+        ಮುಂದೆ</button>
+
+    <audio id="aud" autoplay> </audio>
+
+
+</body>
+<script>
+
+    function p() {
+        var adui = document.getElementById('aud');
+        if(adui.paused){
+            adui.play();
+        } else {
+            adui.pause();
+        }
+    }
+
+    function handleKeydown(e) {
+        switch (e.key) {
+            case 'ArrowUp':
+                nav(-1);
+                break;
+            case 'ArrowDown':
+                nav(1);
+                break;
+            case 'ArrowRight':
+                nav(1);
+                break;
+            case 'ArrowLeft':
+                nav(-1);
+                break;
+        }
+    }
+
+    function clickevent(event) {
+
+        if (event.key == "ArrowLeft") {
+            console.log(event.key);
+            next();
+        } else if (event.key == "ArrowRight") {
+            console.log(event.key);
+            prev();
+        }
+    }
+
+    var ads = [
+        "./a/Black Panther.mp3",
+        "./a/See you again.mp3",
+        "./a/The legend of Zelda (8-bit).mp3",
+        "./a/Great Palace Theme.mp3"
+    ];
+    var index = 0;
+    var player = document.getElementById("aud");
+    player.src = ads[index];
+
+
+    function next() {
+        if (index < ads.length - 1) {
+            index = index + 1;
+            player.src = ads[index];
+            console.log("This is index" + index);
+            console.log("This is the array index");
+            document.getElementById('aud').play();
+        }
+    }
+
+    function prev() {
+        if (index > 0) {
+            index = index - 1;
+            player.src = ads[index];
+            console.log("This is index" + index);
+            console.log("This is the array index");
+        }
+    }
+
+
+
+
+
+</script>
+
+
+<!--JavaScript at end of body for optimized loading-->
+<script src="/svdn/main.js"></script>
+<script type="text/javascript" src="/svdn/materialize/js/materialize.js"></script>
+</body>
+
+
+
+
+
+
+
+
+</html>
